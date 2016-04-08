@@ -3,21 +3,21 @@
 	<br>
 	Total ${{itemTotal}}
 	{{#if itemsInCart}}
-		<br>
-		<a href="{{pathFor 'cart'}}">View Cartasdas</a>
-		<br>
-		{{>CartPayNow}}
+	<br>
+	<a href="{{pathFor 'cart'}}">View Cartasdas</a>
+	<br>
+	{{>CartPayNow}}
 	{{/if}}
 </template>
 
 <template name="CartAddItemButton">
 
-        <div class="buttonCart add-item">
-            <img src="/cart2.png" class="imgCartModal" width="24" alt=""><span class="">Добавить в корзину</span>
-            
+	<div class="buttonCart add-item">
+		<img src="/cart2.png" class="imgCartModal" width="24" alt=""><span class="">Добавить в корзину</span>
 
 
-    </div>
+
+	</div>
 </template>
 
 <template name="CartPayNow">
@@ -25,34 +25,112 @@
 </template>
 
 <template name="CartItems">
-	{{#if hasItems}}
-		{{itemCount}} items
-		<br>
-		Total ${{itemTotal}}
-		<br>
-		{{>CartPayNow}}
-		<br>
-		<hr>
-		<br>
-		{{#each items}}
-			{{>CartItem}}
-		{{/each}}
-	{{else}}
-		No items in cart!
-	{{/if}}
+	<!-- 		{{>rezdelnyyNav}} -->
+	<div class="row">
+		<div class="col s10 offset-s1">
+			<h4>Оформления заказа</h4>
+			
+			<div class="col s8 ">
+				<span>Контактные данные</span>
+				<div class="formContact">
+					<form action="#">
+						<div class="labelCheckout">
+							<div class="col s5">
+						<p><label for=""> Имя и Фамилия</label></p>
+						<p><label for=""> Имя и Фамилия</label></p>
+						<p><label for=""> Имя и Фамилия</label></p>
+						<p><label for=""> Имя и Фамилия</label></p>
+						<p><label for=""> Имя и Фамилия</label></p>
+							</div>
+							<div class="col s7">
+								<p><input type="text" class="" id="nameAndLastName"></p>
+								<p><input type="text" class="" id="nameAndLastName"></p>
+								<p><input type="text" class="" id="nameAndLastName"></p>
+								<p><input type="text" class="" id="nameAndLastName"></p>
+								<p><input type="text" class="" id="nameAndLastName"></p>
+							</div>
+						</div>
+						
+					</form>
+				</div>
+
+
+
+
+		
+			</div>
+				<div class="col s4 contactCart">
+				<p>cart</p>
+			</div>
+						<div class="col s8 ">
+			                        <span>Доставка и оплата</span>
+                <div class="formContact">
+
+                        <div class="labelCheckout">
+                            <p>Доставка</p>                            
+                        </div>
+                        <div class="inputCheckout">
+                            <p>
+                                <input class="with-gap" name="group1" type="radio" id="test1" checked="" />
+                                <label for="test1">Новая почта (Бесплатно)</label>
+                            </p>
+                            <p>
+                                <input class="with-gap" name="group1" type="radio" id="test2"  />
+                                <label for="test2">Самовывоз из нашего магазина</label>
+                            </p>
+                        </div>
+             
+
+                </div>
+
+
+
+
+		
+			</div>
+							<div class="col s8 ">
+
+
+                        <div class="labelCheckout">
+                            <p class="PayCheckOut">Оплата</p>                            
+                        </div>
+                        <div class="inputCheckout">
+                            <p>
+                                <input class="with-gap" name="group2" type="radio" id="test3" checked="" />
+                                <label for="test3">Наличнымы при получении товара</label>
+                            </p>
+                            <p>
+                                <input class="with-gap" name="group2" type="radio" id="test4"  />
+                                <label for="test4">Предоплата</label>
+                            </p>
+                        </div>
+                  
+
+
+
+
+		
+			</div>
+
+		
+		</div>
+	</div>
+<!-- 		{{itemCount}} items
+<br>
+Total ${{itemTotal}}
+<br> -->
+<!-- 	{{>CartPayNow}} -->
+
+<!-- 		{{#each items}}
+	{{>CartItem}}
+	{{/each}} -->
 </template>
 
 <template name="CartItem">
 	<div>
-	<img src="{{colorPhoto}}" width="100" alt="">
+		<img src="{{colorPhoto}}" width="100" alt="">
 
 		{{itemCount}} items
-		<br>
-		
-		<br>
-		<div class="row">
-		</div>
+
 	</div>
-	<hr>
-	<br><br><br>
 </template>

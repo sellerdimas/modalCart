@@ -30,6 +30,10 @@ src: local("helveticaneuecyrLight"), url("fonts/helveticaneuecyrLight.otf");
     border-bottom: 1px solid #E94660;
   box-shadow: 0 1px 0 0 #E94660;
 }
+.inputText.valid, .inputText:focus.valid{
+    border-bottom: 1px solid #E94660;
+  box-shadow: 0 1px 0 0 #E94660; 
+}
 .inputText{
     background-color: transparent;
   border: none;
@@ -134,8 +138,9 @@ body, html {
 }
 /* =============================nav============================== */
 .normInp{
-  border: 1px solid gray;
-  border-radius: 2px;
+  border: 1px solid #c2c2cc;
+  box-shadow: inset 3px 3px 1px 0 #eeeeef;
+  border-radius: 3px;
   width: 30px;
 }
 @media only screen and (min-width : 992px) {
@@ -1034,6 +1039,32 @@ footer.page-footer {
     margin: 0 5px 3px 0;
   }
 /*=============================preLoader============================== */
+
+.formContact{
+  margin-top: 5px;
+  border-top: 1px solid #f5f5f5;
+}
+.contactCart{
+  border: 1px solid #333;
+  border-radius: 2px;
+}
+.labelCheckout{
+  float: left;
+  margin-right: 40px;
+}
+.inputCheckout{
+  float: left;
+}
+.labelCheckout input{
+  padding-left: 5px;
+  width: 300px;
+  border-radius: 3px;
+  border: 1px solid #c2c2cc;
+  box-shadow: inset 3px 3px 1px 0 #eeeeef;
+}
+.PayCheckOut{
+  margin-right: 12px;
+}
 /* .loading-message {
   color: #ffffff;
   font-size: 50px;
