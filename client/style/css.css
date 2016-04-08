@@ -13,8 +13,44 @@ src: local("OpenSansRegular"), url("fonts/OpenSansRegular.ttf");
 font-family: OpenSansBold;
 src: local("OpenSansBold"), url("fonts/OpenSansBold.ttf");
 }
+@font-face {
+font-family: helveticaneuecyrBold;
+src: local("helveticaneuecyrBold"), url("fonts/helveticaneuecyrBold.otf");
+}
+@font-face {
+font-family: helveticaneuecyrLight;
+src: local("helveticaneuecyrLight"), url("fonts/helveticaneuecyrLight.otf");
+}
+
+
+
 /* =============================fonts============================== */
 /* =============================class============================== */
+.inputText:focus:not([readonly]){
+    border-bottom: 1px solid #E94660;
+  box-shadow: 0 1px 0 0 #E94660;
+}
+.inputText{
+    background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #9e9e9e;
+  border-radius: 0;
+  outline: none;
+  height: 3rem;
+  width: 100%;
+  font-size: 1rem;
+  margin: 0 0 15px 0;
+  padding: 0;
+  box-shadow: none;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+.inputText.valid, .inputText:focus.valid{
+    border-bottom: 1px solid #E94660;
+  box-shadow: 0 1px 0 0 #E94660; 
+}
+
  a {
     outline: none; /* Убираем границу вокруг ссылок  */
    }
@@ -154,7 +190,19 @@ nav ul a:hover {
   right: 40px;
   color: #fb515d;
 }
-
+.itogCart{
+  font-size: 20px;
+    font-family: OpenSansBold;
+}
+.mainSumGrn{
+  font-family: OpenSansRegular;
+}
+.mainTotalSum{
+  color: #414141;
+  font-size: 20px;
+  float: right;
+    font-family: OpenSansBold;
+}
 .cartTextP{
   font-size: 14px;
   color: #aaa;
@@ -166,7 +214,7 @@ nav ul a:hover {
 }
 .cartTotalBut{
   min-height: 100px;
-    padding: 20px 40px 20px 40px;
+      padding: 0 40px 40px 40px;
   background: #fffcdf;
   float: right;
 }
@@ -189,9 +237,9 @@ nav ul a:hover {
 
 }
 .catPriceBlock span{
-  color: #414141;
+  color: black;
   font-size: 18px;
-  font-family: OpenSansBold;
+/*   font-family: OpenSansBold; */
 }
 .inputCartBlock{
   margin-right: 20%;
@@ -860,7 +908,7 @@ select {
     margin-top: 20px;
     font-family: OpenSansBold;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
-
+    margin-bottom: 40px;
     margin-right: 40px;
     position: relative;
 }
@@ -879,7 +927,7 @@ select {
     font-family: OpenSansBold;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
     display: inline-block;
-         margin:20px 0 20px 40px;
+         margin:59px 0 20px 40px;
     float: left;
 }
 .modal4Cart{
@@ -893,9 +941,7 @@ select {
     font-family: OpenSansBold;
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.3);
     display: inline-block;
-    margin-right: 40px;
     position: relative;
-     margin:20px 40px 20px 40px;
     float: right;
 }
 .modal4Cart span {
