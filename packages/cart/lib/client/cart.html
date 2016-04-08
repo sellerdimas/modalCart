@@ -25,94 +25,161 @@
 </template>
 
 <template name="CartItems">
-	<!-- 		{{>rezdelnyyNav}} -->
+{{>rezdelnyyNav}} 
 	<div class="row">
 		<div class="col s10 offset-s1">
 			<h4>Оформления заказа</h4>
 			
-			<div class="col s8 ">
-				<span>Контактные данные</span>
+			<div class="col s12 m8 ">
+				<span class="contactHeader">Контактные данные</span>
 				<div class="formContact">
 					<form action="#">
-						<div class="labelCheckout">
-							<div class="col s5">
-						<p><label for=""> Имя и Фамилия</label></p>
-						<p><label for=""> Имя и Фамилия</label></p>
-						<p><label for=""> Имя и Фамилия</label></p>
-						<p><label for=""> Имя и Фамилия</label></p>
-						<p><label for=""> Имя и Фамилия</label></p>
+
+
+						<div class="labelCheckout col s12">
+							<div class="col s4">
+								<p><label for=""> Имя и Фамилия:</label></p>
+
 							</div>
-							<div class="col s7">
+							<div class="col s5">
 								<p><input type="text" class="" id="nameAndLastName"></p>
+
+							</div>
+						</div>
+						<div class="labelCheckout col s12">
+							<div class="col s4">
+								<p><label for=""> Моб. телефон:</label></p>
+
+							</div>
+							<div class="col s5">
 								<p><input type="text" class="" id="nameAndLastName"></p>
+
+							</div>
+						</div>
+						<div class="labelCheckout col s12">
+							<div class="col s4">
+								<p><label for=""> Ел.Почта:</label></p>
+
+							</div>
+							<div class="col s5">
 								<p><input type="text" class="" id="nameAndLastName"></p>
+
+							</div>
+						</div>
+						<div class="labelCheckout col s12">
+							<div class="col s4">
+								<p><label for="">Город:</label></p>
+
+							</div>
+							<div class="col s5">
 								<p><input type="text" class="" id="nameAndLastName"></p>
+
+							</div>
+						</div>
+						<div class="labelCheckout col s12">
+							<div class="col s4">
+								<p><label for=""> Отделения Новой почты:</label></p>
+
+							</div>
+							<div class="col s5">
 								<p><input type="text" class="" id="nameAndLastName"></p>
+
 							</div>
 						</div>
 						
 					</form>
 				</div>
+				<div class="col s8 ">
+
+
+					<div class="labelCheckout col s4">
+						<p>Доставка</p>                            
+					</div>
+					<div class="inputCheckout col s8">
+						<p>
+							<input class="with-gap" name="group1" type="radio" id="test1" checked="" />
+							<label for="test1">Новая почта (Бесплатно)</label>
+						</p>
+						<p>
+							<input class="with-gap" name="group1" type="radio" id="test2"  />
+							<label for="test2">Самовывоз из нашего магазина</label>
+						</p>
+					</div>
 
 
 
 
-		
+
+
+
+
+
+				</div>
+				<div class="col s8 ">
+
+
+					<div class="labelCheckout col s4">
+						<p class="PayCheckOut">Оплата:</p>                            
+					</div>
+					<div class="inputCheckout col s8">
+						<p>
+							<input class="with-gap" name="group2" type="radio" id="test3" checked="" />
+							<label for="test3">Наличнымы при получении товара</label>
+						</p>
+						<p>
+							<input class="with-gap" name="group2" type="radio" id="test4"  />
+							<label for="test4">Предоплата:</label>
+						</p>
+					</div>
+
+				</div>
+
+
+
+
 			</div>
-				<div class="col s4 contactCart">
-				<p>cart</p>
-			</div>
-						<div class="col s8 ">
-			                        <span>Доставка и оплата</span>
-                <div class="formContact">
+			<div class="col s10 m4 contactCart">
+				{{#each items}}
+				<div class="col s12 tovarCheckOut">
+					<a href="http://localhost:3000/razdelnyy/{{productId}}" class="checkoutImgCart"><img src="{{colorPhoto}}" class="responsive-img" alt=""></a>
+					<div class="checkoutA col s8">
+						<a href="http://localhost:3000/razdelnyy/{{productId}}" class="cartA">{{tovarHeader}} {{byst}} {{trysu}}</a>
+						<p>{{itemCount}} шт.</p>
 
-                        <div class="labelCheckout">
-                            <p>Доставка</p>                            
-                        </div>
-                        <div class="inputCheckout">
-                            <p>
-                                <input class="with-gap" name="group1" type="radio" id="test1" checked="" />
-                                <label for="test1">Новая почта (Бесплатно)</label>
-                            </p>
-                            <p>
-                                <input class="with-gap" name="group1" type="radio" id="test2"  />
-                                <label for="test2">Самовывоз из нашего магазина</label>
-                            </p>
-                        </div>
-             
+					</div>
+					<div class="checkOutCartPrice">
 
-                </div>
+						<span>{{price}}</span> грн
+					</div>
+				</div>
 
 
-
-
-		
-			</div>
-							<div class="col s8 ">
-
-
-                        <div class="labelCheckout">
-                            <p class="PayCheckOut">Оплата</p>                            
-                        </div>
-                        <div class="inputCheckout">
-                            <p>
-                                <input class="with-gap" name="group2" type="radio" id="test3" checked="" />
-                                <label for="test3">Наличнымы при получении товара</label>
-                            </p>
-                            <p>
-                                <input class="with-gap" name="group2" type="radio" id="test4"  />
-                                <label for="test4">Предоплата</label>
-                            </p>
-                        </div>
-                  
-
-
-
-
-		
+				{{/each}}
+				<div class="col s12">
+					<div class="totItogSum">
+						<p class="totalSumCheckOutItog">Итого:</p>
+						<p class="totalSumCheckOut">{{itemTotal}} грн</p>
+					</div>
+				</div>
+				<div class="col s12 center-align margUpdate">
+					<a href="" class="updateOrder">Редактировать заказ</a>
+				</div>
+				
 			</div>
 
-		
+			<div class="col s8">
+				<div class="col s12">
+					<div class="col m5 offset-m4 col s12 center-align" id="CheckOutButt">
+
+
+						<span class="">Оформить заказ</span>  
+
+					</div>
+				</div>
+
+			</div>
+
+
 		</div>
 	</div>
 <!-- 		{{itemCount}} items
