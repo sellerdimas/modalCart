@@ -82,11 +82,13 @@ Template.CartAddItemButton.events({
 		item.trysu = $('.selectSizeTrysu').val();
 		item.itemCount = $('.quantity').val();
 		item.colorPhoto = $('.colorPhoto .colorActive').attr('src');
+		item.datafiel = new Date();
 /*		item.name = $('#name').val();
 		item.number = $('#namber').val();*/
 
                 
 		Cart.Items.insert(item);
+
              $('#modal4').openModal();
             }else{
                 alert('Вы не выбрали цвет');
@@ -123,40 +125,39 @@ Template.CartPayNow.events({
 	    var mas = item.items.collection._docs._map;
 	    var count = 1;
 	    var orders = '';
+	    console.log(this);
 	    console.log(mas);
 	    for(key in mas){
 /*	    	var size = mas[key].price + mas[key].tovarHeader + mas[key].byst + mas[key].trysu;
 */	
-		orders += count + '. ' + mas[key].tovarHeader + ' Цена: ' + mas[key].price  + ' Бюст: ' + mas[key].byst + ' Трусы: ' + mas[key].trysu + '--------------\n';
+		orders += '----------' + count + '. ' + mas[key].tovarHeader + ' Цена: ' + mas[key].price  + ' Бюст: ' + mas[key].byst + ' Трусы: ' + mas[key].trysu + ' Кол-во ' + mas[key].itemCount + '--------------\n';
 	    count++
 	    }
-	    Meteor.call('OrderCart',orders, function (err, res) {
-                if(err){
-                    console.log('error nezakanalo');
-                }else{
-
-                	console.log('zakanalo')
-                     
-                }
-            });     
-	    console.log(orders);
-	}
-});
-
-/*Template.CartPayNow.rendered = function(){
-	StripeCheckoutHandler = StripeCheckout.configure({
-	    key: Meteor.settings.public.stripe_pk,
-	    token: function(token) {
-	      Meteor.call("CartPayForItems", token, Session.get('Cart-deviceId'), function(error, result) {
+	       var orderCart = {
+	       	orders: orders,
+	       	nameAndLastName: $('#nameAndLastName').val(),
+	       	checkOutPhone: $('#checkOutPhone').val(),
+	       	checkoutEmail: $('#checkoutEmail').val(),
+	       	checkoutCity: $('#checkoutCity').val(),
+	       	Otdeleniya: $('#Otdeleniya').val()
+	    	
+	    	}
+  
+	if(orderCart.orders && orderCart.nameAndLastName && orderCart.checkOutPhone && orderCart.checkoutEmail && orderCart.checkoutCity && orderCart.Otdeleniya){
+		    Meteor.call("OrderCart", orderCart, Session.get('Cart-deviceId'), function(error, result) {
 		      if (error) {
 		        alert(JSON.stringify(error));
 		      }else{
-		      	alert("Payment Complete");
+		      	$('#modal3').openModal();
 		      }
 		     });
-	    }
-	  });
-};*/
+	 
+	}else{
+		alert('Не все поля заполнены');
+	}
+/*	    console.log(orderCart.orders, orderCart.nameAndLastName, orderCart.checkOutPhone, orderCart.checkoutEmail, orderCart.checkoutCity, orderCart.Otdeleniya);
+*/	}
+});
 
 Router.route('/checkout', function () {
   this.render('CartItems', {
@@ -168,20 +169,25 @@ Router.route('/checkout', function () {
 			query.deviceId = Session.get('Cart-deviceId');
 			
 		return {
-    		items:Cart.Items.find(query),
+    		items:Cart.Items.find(query, {sort: {datafiel: -1}}),
     		hasItems:!Session.equals('Cart-itemCount', 0),
     		itemCount:Session.get('Cart-itemCount'),
-			itemTotal:Session.get('Cart-itemTotal'),
-			sasi: 'leleka'
+			itemTotal:Session.get('Cart-itemTotal')
     	};
     }
   });
 });
 
-Template.CartItem.events({
+/*Template.CartItem.events({
 	'click .remove':function(event, template){
 		event.preventDefault();
 		Cart.Items.remove({_id:this._id});
+	}
+});*/
+Template.CartItems.events({
+	'click .updateOrder':function(event, template){
+		event.preventDefault();
+		$('#modal4').openModal();
 	}
 });
 

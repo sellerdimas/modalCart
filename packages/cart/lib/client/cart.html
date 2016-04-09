@@ -21,13 +21,21 @@
 </template>
 
 <template name="CartPayNow">
-	<button id="pay-now">Pay Now</button>
+						<div class="col m5 offset-m4 col s12 center-align" id="pay-now">
+
+
+						<span class="">Оформить заказ</span>  
+
+					</div>
 </template>
 
 <template name="CartItems">
+{{>modal3}}
+{{>modal4}}
 {{>rezdelnyyNav}} 
 	<div class="row">
 		<div class="col s10 offset-s1">
+		{{#if itemCount}}
 			<h4>Оформления заказа</h4>
 			
 			<div class="col s12 m8 ">
@@ -52,7 +60,7 @@
 
 							</div>
 							<div class="col s5">
-								<p><input type="text" class="" id="nameAndLastName"></p>
+								<p><input type="text" class="" id="checkOutPhone"></p>
 
 							</div>
 						</div>
@@ -62,27 +70,27 @@
 
 							</div>
 							<div class="col s5">
-								<p><input type="text" class="" id="nameAndLastName"></p>
+								<p><input type="text" class="" id="checkoutEmail"></p>
 
 							</div>
 						</div>
 						<div class="labelCheckout col s12">
 							<div class="col s4">
-								<p><label for="">Город:</label></p>
+								<p><label for="checkoutCity">Город:</label></p>
 
 							</div>
 							<div class="col s5">
-								<p><input type="text" class="" id="nameAndLastName"></p>
+								<p><input type="text" class="" id="checkoutCity"></p>
 
 							</div>
 						</div>
 						<div class="labelCheckout col s12">
 							<div class="col s4">
-								<p><label for=""> Отделения Новой почты:</label></p>
+								<p><label for="Otdeleniya"> Отделения Новой почты:</label></p>
 
 							</div>
 							<div class="col s5">
-								<p><input type="text" class="" id="nameAndLastName"></p>
+								<p><input type="text" class="" id="Otdeleniya"></p>
 
 							</div>
 						</div>
@@ -133,6 +141,10 @@
 					</div>
 
 				</div>
+				<div class="col s12">
+
+					{{>CartPayNow}}
+				</div>
 
 
 
@@ -167,30 +179,12 @@
 				
 			</div>
 
-			<div class="col s8">
-				<div class="col s12">
-					<div class="col m5 offset-m4 col s12 center-align" id="CheckOutButt">
+		{{else}}
+		   <h5 class="center-align">СПАСИБО! За оставленною заявку, наша служба поддержки работает с 10:00 до 22:00. Наш менеджер с вами свяжется в рабочее время.Постарайтесь взять звонок от неизвестного номера скорей всего это будем мы.Если вы решите нам позвонить самостоятельно в рабочее время наш номер: (097)23-29-570</h5>
 
-
-						<span class="">Оформить заказ</span>  
-
-					</div>
-				</div>
-
-			</div>
-
-
+		{{/if}}
 		</div>
 	</div>
-<!-- 		{{itemCount}} items
-<br>
-Total ${{itemTotal}}
-<br> -->
-<!-- 	{{>CartPayNow}} -->
-
-<!-- 		{{#each items}}
-	{{>CartItem}}
-	{{/each}} -->
 </template>
 
 <template name="CartItem">

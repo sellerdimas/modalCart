@@ -23,21 +23,28 @@ Meteor.publish("Cart-deviceOrders", function(deviceId){
 
 
 Meteor.methods({
-  OrderCart: function (orders) {
-    var date = new Date();
-    var options = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      weekday: 'long',
-      timezone: 'UTC',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric'
-    };
+  OrderCart: function (orderCart, deviceId) {
+    this.unblock();
+    var items, result;
+    if(this.userId)
+      items = Cart.Items.find({userId:this.userId});
+    else
+      items = Cart.Items.find({deviceId:deviceId});
+
+
+    items.forEach(function(item){
+      Cart.Items.remove({_id:item._id});
+    });
    OrdersCart.insert({
-            Orders: orders + '\n' + orders
+          Orders: orderCart.orders,
+          nameAndLastName: orderCart.nameAndLastName,
+          checkOutPhone: orderCart.checkOutPhone,
+          checkoutEmail: orderCart.checkoutEmail,
+          checkoutCity: orderCart.checkoutCity,
+          Otdeleniya: orderCart.Otdeleniya,
+          obrabotan: '-'
            
-        });  
+        }); 
+
   }
 });

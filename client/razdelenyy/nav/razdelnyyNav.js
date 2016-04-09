@@ -7,7 +7,7 @@ Template.rezdelnyyNav.events({
 
 Template.rezdelnyyNav.events({
     'click .blockCart':function(e, tmpl) {
-    	Router.go('cart');
+    	$('#modal4').openModal();
         
 
 
