@@ -10,7 +10,7 @@
     cursorcolor:'12, 12, 12',
     opacity:0.4,
     cursor:'crosshair',
-    zindex:2147483647,
+    zindex:3,
     zoomviewsize:[480,395],
     zoomviewposition:'right',
     zoomviewmargin:10,

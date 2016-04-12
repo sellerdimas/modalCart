@@ -148,6 +148,8 @@ Template.CartPayNow.events({
 		      if (error) {
 		        alert(JSON.stringify(error));
 		      }else{
+		      	    ga('send', 'event', 'zakaz', 'buy_kypalnik');
+                    yaCounter35842265.reachGoal('zakaz');
 		      	$('#modal3').openModal();
 		      }
 		     });
