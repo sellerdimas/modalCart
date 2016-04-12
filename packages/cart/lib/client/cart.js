@@ -123,15 +123,11 @@ Template.CartPayNow.events({
 
 	    var item = this;
 	    var mas = item.items.collection._docs._map;
-	    var count = 1;
 	    var orders = '';
-	    console.log(this);
-	    console.log(mas);
 	    for(key in mas){
 /*	    	var size = mas[key].price + mas[key].tovarHeader + mas[key].byst + mas[key].trysu;
 */	
-		orders += '----------' + count + '. ' + mas[key].tovarHeader + ' Цена: ' + mas[key].price  + ' Бюст: ' + mas[key].byst + ' Трусы: ' + mas[key].trysu + ' Кол-во ' + mas[key].itemCount + '--------------\n';
-	    count++
+		orders += '----------' + mas[key].tovarHeader + ' Цена: ' + mas[key].price  + ' Бюст: ' + mas[key].byst + ' Трусы: ' + mas[key].trysu + ' Кол-во ' + mas[key].itemCount + '--------------\n';
 	    }
 	       var orderCart = {
 	       	orders: orders,
@@ -139,7 +135,8 @@ Template.CartPayNow.events({
 	       	checkOutPhone: $('#checkOutPhone').val(),
 	       	checkoutEmail: $('#checkoutEmail').val(),
 	       	checkoutCity: $('#checkoutCity').val(),
-	       	Otdeleniya: $('#Otdeleniya').val()
+	       	Otdeleniya: $('#Otdeleniya').val(),
+	       	dostavka: $( "input:checked" ).val() + ' ' + $( ".checkOutNall input:checked" ).val()
 	    	
 	    	}
   

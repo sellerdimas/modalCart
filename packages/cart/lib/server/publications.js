@@ -42,6 +42,7 @@ Meteor.methods({
           checkoutEmail: orderCart.checkoutEmail,
           checkoutCity: orderCart.checkoutCity,
           Otdeleniya: orderCart.Otdeleniya,
+          dostavka: orderCart.dostavka,
           obrabotan: '-'
            
         }); 

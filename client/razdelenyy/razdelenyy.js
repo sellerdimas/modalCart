@@ -14,7 +14,7 @@ Template.razdelnyy.helpers({
 
     })
 
-  
+  glassPresentBlock
 })*/
 Template.razdelnyy.events({
     'click .arrowRazdelnyy': function (e, tmpl) {
@@ -41,8 +41,14 @@ Template.razdelnyy.events({
     }
 });
 Template.razdelnyy.onRendered(function () {
-
-
+$('.glassPresentBlock').hide();
+$( '.razdelnyyGlass' ).hover(
+        function() {
+$('.glassPresentBlock').fadeIn(300);
+        },function() {
+         $('.glassPresentBlock').fadeOut(300);
+        }
+    );
 
   $( '.socSet img' ).hover(
         function() {
