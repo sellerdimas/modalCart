@@ -65,7 +65,7 @@
                         <div class="tovarHeader">{{tovarHeader}}</div>
                         <div class="firma">{{firma}}</div>
                         <div class="price">
-                            <span class="akcia">{{akcii}} грн.</span>
+                            {{#if akcii}}<span class="akcia">{{akcii}} грн.</span>{{/if}}
                             <span>{{price}} грн.</span>
                             <span class="buyTovar">купить</span>
                         </div>
