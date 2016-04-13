@@ -127,7 +127,7 @@ Template.CartPayNow.events({
 	    for(key in mas){
 /*	    	var size = mas[key].price + mas[key].tovarHeader + mas[key].byst + mas[key].trysu;
 */	
-		orders += '----------' + mas[key].tovarHeader + ' Цена: ' + mas[key].price  + ' Бюст: ' + mas[key].byst + ' Трусы: ' + mas[key].trysu + ' Кол-во ' + mas[key].itemCount + '--------------\n';
+		orders += '----------' + mas[key].tovarHeader + ' Цена: ' + mas[key].price  + ' Бюст: ' + mas[key].byst + ' Трусы: ' + mas[key].trysu +  ' Цвет: ' + mas[key].colorPhoto +  ' Кол-во ' + mas[key].itemCount + '--------------\n';
 	    }
 	       var orderCart = {
 	       	orders: orders,
