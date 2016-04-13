@@ -63,6 +63,34 @@ Template.modal4.helpers({
         
     }
 });
+
+Template.modal2.events({
+    'click .modalSendButt': function (e) {
+        var modal = {
+            name: $('#name1').val(),
+            number:$('#number1').val(),
+            email: $('#email1').val()
+        }
+       
+        if(modal.name && modal.number && modal.email){
+            Meteor.call('Calls',modal, function (err, res) {
+                if(err){
+                    console.log('error methods moadal2');
+                }else{
+                     $('#modal2').closeModal();
+                     ga('send', 'event', 'zvonok', 'zakaz_zvonka');
+                     yaCounter35842265.reachGoal('zvonok');
+                     $('#modal3').openModal();
+                     
+                }
+
+            });       
+        }else{
+            alert('Вы не заполнели все поля');
+        }
+    }
+});
+
 Template.modal4.events({
     'blur .quantTovar':function(event, template){
         event.preventDefault();
