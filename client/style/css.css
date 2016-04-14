@@ -590,6 +590,16 @@ border: 1px solid #CCCCCC;
   cursor: pointer;
   border-radius: 50%;
 }
+.errorCvet{
+  border: 1px solid #f7dd89;
+  background: #fff9eb;
+  margin: 10px 0;
+
+}
+.errorCvet p{
+  font-size: 14px;
+  margin: 5px;
+}
 .hoverImg img{
   height: 1px;
   width: 1px;

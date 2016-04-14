@@ -88,10 +88,10 @@ Template.CartAddItemButton.events({
 
                 
 		Cart.Items.insert(item);
-
+				$('.errorCvet').fadeOut(100);
              $('#modal4').openModal();
             }else{
-                alert('Вы не выбрали цвет');
+                $('.errorCvet').fadeIn(100);
         }
 
 

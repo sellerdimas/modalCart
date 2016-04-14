@@ -41,6 +41,7 @@ Template.razdelnyy.events({
     }
 });
 Template.razdelnyy.onRendered(function () {
+    $('.errorCvet').hide();
 $('.glassPresentBlock').hide();
 $( '.razdelnyyGlass' ).hover(
         function() {
