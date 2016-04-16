@@ -152,9 +152,8 @@ Meteor.call('sendEmail',orderCart.checkoutEmail, orderCart.nameAndLastName, orde
                 if(err){
                 	console.log('err email');
                 }else{
-                	   /*ga('send', 'event', 'zakaz', 'buy_kypalnik');*/
-                	   ga('send', 'event', 'zakaz', 'sell');
-                    yaCounter35842265.reachGoal('zakaz');
+                	   ga('send', 'event', 'zakaz', 'buy_kypalnik');
+                    yaCounter35842265.reachGoal('main_zakaz');
 		      	$('#modal3').openModal();
 
                 }
