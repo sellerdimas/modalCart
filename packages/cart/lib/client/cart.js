@@ -127,7 +127,7 @@ Template.CartPayNow.events({
 	    for(key in mas){
 /*	    	var size = mas[key].price + mas[key].tovarHeader + mas[key].byst + mas[key].trysu;
 */	
-		orders += '----------' + mas[key].tovarHeader + ' Цена: ' + mas[key].price  + ' Бюст: ' + mas[key].byst + ' Трусы: ' + mas[key].trysu +  ' Цвет: ' + mas[key].colorPhoto +  ' Кол-во ' + mas[key].itemCount + '--------------\n';
+		orders += mas[key].tovarHeader + ' Цена: ' + mas[key].price  + ' Бюст: ' + mas[key].byst + ' Трусы: ' + mas[key].trysu +  ' Цвет: ' + mas[key].colorPhoto +  ' Кол-во: ' + mas[key].itemCount + '\n';
 	    }
 	       var orderCart = {
 	       	orders: orders,
@@ -139,21 +139,40 @@ Template.CartPayNow.events({
 	       	dostavka: $( "input:checked" ).val() + ' ' + $( ".checkOutNall input:checked" ).val()
 	    	
 	    	}
-  
-	if(orderCart.orders && orderCart.nameAndLastName && orderCart.checkOutPhone && orderCart.checkoutEmail && orderCart.checkoutCity && orderCart.Otdeleniya){
+	    	        var checkEmail = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test($('#checkoutEmail').val());
+
+  if(checkEmail){
+if(orderCart.orders && orderCart.nameAndLastName && orderCart.checkOutPhone && orderCart.checkoutEmail && orderCart.checkoutCity && orderCart.Otdeleniya){
 		    Meteor.call("OrderCart", orderCart, Session.get('Cart-deviceId'), function(error, result) {
 		      if (error) {
 		        alert(JSON.stringify(error));
 		      }else{
-		      	    ga('send', 'event', 'zakaz', 'buy_kypalnik');
+		      	 
+Meteor.call('sendEmail',orderCart.checkoutEmail, orderCart.nameAndLastName, orderCart.orders, orderCart, function (err, res) {
+                if(err){
+                	console.log('err email');
+                }else{
+                	   ga('send', 'event', 'zakaz', 'buy_kypalnik');
                     yaCounter35842265.reachGoal('zakaz');
 		      	$('#modal3').openModal();
+
+                }
+
+          });
+
+
+
+
 		      }
 		     });
 	 
 	}else{
 		alert('Не все поля заполнены');
 	}
+  }else{
+  	alert('Ел. Почта введена некорректно');
+  }
+	
 /*	    console.log(orderCart.orders, orderCart.nameAndLastName, orderCart.checkOutPhone, orderCart.checkoutEmail, orderCart.checkoutCity, orderCart.Otdeleniya);
 */	}
 });

@@ -71,8 +71,9 @@ Template.modal2.events({
             number:$('#number1').val(),
             email: $('#email1').val()
         }
-       
-        if(modal.name && modal.number && modal.email){
+        var emailZvonok = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/.test($('#email1').val());
+       if(emailZvonok){
+             if(modal.name && modal.number && modal.email){
             Meteor.call('Calls',modal, function (err, res) {
                 if(err){
                     console.log('error methods moadal2');
@@ -81,6 +82,16 @@ Template.modal2.events({
                      ga('send', 'event', 'zvonok', 'zakaz_zvonka');
                      yaCounter35842265.reachGoal('zvonok');
                      $('#modal3').openModal();
+
+                     Meteor.call('sendEmailZvonok',modal.name, modal.number, modal.email, function (err, res) {
+                if(err){
+                    console.log('err email');
+                }else{
+
+
+                }
+
+          });
                      
                 }
 
@@ -88,6 +99,8 @@ Template.modal2.events({
         }else{
             alert('Вы не заполнели все поля');
         }
+       }
+   
     }
 });
 

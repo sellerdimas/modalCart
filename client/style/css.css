@@ -717,7 +717,7 @@ border: 1px solid #CCCCCC;
 } 
 
 .info4{
-  height: 310px;
+  height: 330px;
  background: rgba(189,189,189,0.8);
  color:#333333;
  margin-bottom: 70px;
@@ -733,9 +733,11 @@ border: 1px solid #CCCCCC;
   margin-left: 5px;
   font-family: OpenSansBold;
 }
-#number2,#name2{
+#number2,#name2, #infoEmail{
   background: #FFFFFF;
   font-weight: 600;
+  height: 35px;
+  margin-bottom: 5px;
   border-radius: 5px;
   border-bottom: 1px solid #f5f5f5;
     box-shadow: 0 1px 0 0 #f5f5f5;
